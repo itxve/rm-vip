@@ -7,8 +7,8 @@
     "withGlobalTauri": false
   },
   "package": {
-    "productName": "my-tauri-app",
-    "version": "0.0.0"
+    "productName": "rm-jy-vip",
+    "version": "0.1.0"
   },
   "tauri": {
     "allowlist": {

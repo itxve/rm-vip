@@ -55,6 +55,10 @@ jobs:
         with:
           node-version: 16
 
+         # 安装 Pnpm
+      - name: Install Pnpm
+        run: |
+         yarn global add pnpm
       # 安装 Rust
       - name: Install Rust stable
         uses: actions-rs/toolchain@v1

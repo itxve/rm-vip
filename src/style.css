@@ -16,11 +16,12 @@
 
 .container {
   margin: 0;
-  padding-top: 10vh;
+  padding-top: 5vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: center;
+  overflow-y: hidden;
 }
 
 footer {
@@ -32,6 +33,7 @@ footer {
   flex-direction: column;
   justify-content: center;
   text-align: center;
+  margin-top: 20px;
 }
 
 .logo {

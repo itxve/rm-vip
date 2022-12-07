@@ -12,10 +12,12 @@ export type DarftProps = {
 
 import { readSysFileForArray, writeSysFileFromString } from "@/util";
 import { ref, watchPostEffect, onMounted } from "vue";
-import { NButton } from "naive-ui";
+import { NButton, useNotification } from "naive-ui";
 
 const props = defineProps<DarftItemProps>();
 const fileBlob = ref<string>();
+
+const notification = useNotification();
 
 onMounted(() => {
   watchPostEffect(async () => {
@@ -64,7 +66,11 @@ async function removeVip() {
         JSON.stringify(draft)
       );
       if (writeRt) {
-        alert("移除成功");
+        notification["success"]({
+          content: "🚕🚕🚕" + props.draft_name,
+          meta: "移出Vip成功👌👌👌",
+          duration: 2500,
+        });
       }
     };
   }
@@ -78,7 +84,9 @@ async function removeVip() {
       {{ props.draft_name }}
     </span>
   </div>
-  <div><n-button type="error" @click="removeVip()">去除Vip</n-button></div>
+  <div>
+    <n-button type="error" size="small" @click="removeVip()">去除Vip</n-button>
+  </div>
 </template>
 
 <style scoped>

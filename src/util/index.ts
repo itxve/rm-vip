@@ -91,3 +91,7 @@ export async function exsitAppConfigDir() {
     return false;
   }
 }
+
+export function sleep(ms: number) {
+  return new Promise((fn) => setTimeout(fn, ms));
+}

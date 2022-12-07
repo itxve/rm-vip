@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted } from "vue";
+import { ref, onMounted, computed } from "vue";
 
 import { invoke } from "@tauri-apps/api/tauri";
 import {
@@ -8,16 +8,18 @@ import {
   writeConfig,
   initAppDataPath,
   exsitAppConfigDir,
+  sleep,
 } from "@/util";
 import { RustCallResult } from "@/types";
 import DraftItemVue, {
   DarftProps,
   DarftItemProps,
 } from "@/components/DraftItem.vue";
-import { NButton, NGrid, NGi } from "naive-ui";
+import { NButton, NGrid, NGi, NInput } from "naive-ui";
 
 const fileSelectRef = ref<HTMLInputElement>();
 const projectsRef = ref<DarftItemProps[]>([]);
+const searchNameRef = ref();
 
 async function onChange(e: any) {
   let reader = new FileReader();
@@ -60,6 +62,23 @@ onMounted(async () => {
   await loadAllProjects();
 });
 
+const filterProjects = computed(() => {
+  if (!searchNameRef.value) {
+    return projectsRef.value;
+  } else {
+    if (projectsRef.value) {
+      return projectsRef.value.filter(
+        (it) => it.draft_name.indexOf(searchNameRef.value) != -1
+      );
+    } else {
+      return [];
+    }
+  }
+});
+
+/**
+ * 模拟点击文件选择
+ */
 function fileSelect() {
   if (fileSelectRef.value) {
     fileSelectRef.value.click();
@@ -82,6 +101,7 @@ function fileSelect() {
       <n-space>
         <n-input
           clearable
+          v-model:value="searchNameRef"
           style="width: 350px"
           size="large"
           round
@@ -89,27 +109,31 @@ function fileSelect() {
         />
         <n-button
           size="medium"
-          title="配置剪映草稿路径"
+          title="选择剪映草稿目录下的root_meta_info.json"
           round
-          type="success"
           @click="fileSelect()"
         >
-          配置剪映
+          配置剪映草稿路径
         </n-button>
-        <n-button
+        <!-- <n-button
           size="medium"
           title="重新加载项目"
           round
           @click="loadAllProjects()"
           >重新加载项目
-        </n-button></n-space
-      >
+        </n-button> -->
+      </n-space>
     </div>
     <div class="draft-div">
+      <n-empty
+        v-if="!filterProjects || !filterProjects.length"
+        description="暂无匹配项目"
+      >
+      </n-empty>
       <n-grid :x-gap="15" :y-gap="15" item-responsive>
         <n-gi
           span="360:8 480:6 720:4 960:3 1440:2"
-          v-for="project in projectsRef"
+          v-for="project in filterProjects"
         >
           <DraftItemVue v-bind="project" />
         </n-gi>

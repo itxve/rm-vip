@@ -8,9 +8,6 @@ export {}
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     DraftItem: typeof import('./src/components/DraftItem.vue')['default']
-    NButton: typeof import('naive-ui')['NButton']
-    NGi: typeof import('naive-ui')['NGi']
-    NGrid: typeof import('naive-ui')['NGrid']
     NInput: typeof import('naive-ui')['NInput']
     NSpace: typeof import('naive-ui')['NSpace']
     RmMain: typeof import('./src/components/RmMain.vue')['default']

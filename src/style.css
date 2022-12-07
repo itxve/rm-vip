@@ -23,6 +23,17 @@
   text-align: center;
 }
 
+footer {
+  position: fixed;
+  bottom: 0;
+  color: green;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;

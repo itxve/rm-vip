@@ -1,13 +1,15 @@
 <script setup lang="ts">
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
-import Greet from "./components/Greet.vue";
+import RmMain from "./components/RmMain.vue";
 </script>
 
 <template>
   <div class="container">
-    <!-- <h1>这是一个用于剪映去Vip导出的小程序</h1> -->
-    <Greet />
+    <RmMain />
+    <footer class="footer">
+      <div>V1.0.0</div>
+    </footer>
   </div>
 </template>
 

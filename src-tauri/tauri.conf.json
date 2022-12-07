@@ -14,6 +14,7 @@
     "allowlist": {
       "all": true,
       "fs": {
+        "all": true,
         "scope": [
           "$APPDATA/*"
         ]
@@ -34,7 +35,7 @@
         "icons/icon.icns",
         "icons/icon.ico"
       ],
-      "identifier": "itxve.rm.jy.vip",
+      "identifier": "com.rm.jy.vip",
       "longDescription": "",
       "macOS": {
         "entitlements": null,
@@ -61,10 +62,10 @@
     "windows": [
       {
         "fullscreen": false,
-        "height": 600,
         "resizable": true,
-        "title": "my-tauri-app",
-        "width": 800
+        "title": "剪映去Vip导出工具",
+        "minHeight": 420,
+        "minWidth": 640
       }
     ]
   }

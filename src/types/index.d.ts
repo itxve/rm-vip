@@ -1,10 +1,10 @@
-export type JyJsonFile = {
-  all_draft_store: Array<{
-    draft_cover: string;
-    draft_json_file: string;
-    draft_name: string;
-    tm_draft_create: number;
-    tm_draft_modified: number;
-  }>;
-  root_path: string;
+export type RustCallResult<T> = {
+  data: T;
+  err: String;
 };
+
+export enum InitAppDataEnum {
+  EXIST,
+  CreateError,
+  SUCCESS,
+}

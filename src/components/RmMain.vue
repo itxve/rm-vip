@@ -44,7 +44,6 @@ async function onChange(e: any) {
 
 async function loadAllProjects() {
   const exsitConfigDir = await exsitAppConfigDir();
-  console.log(exsitConfigDir);
 
   if (!exsitConfigDir) {
     console.log("no app config dir");

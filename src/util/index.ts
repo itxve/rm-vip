@@ -83,6 +83,7 @@ export async function initAppDataPath() {
 export async function exsitAppConfigDir() {
   try {
     const path = await appConfigDir();
+    console.log("appConfigDir::::", path);
     const exsitAppConfigPath = await exists(path + APP_CONFIG_FILE_NAME, {
       dir: BaseDirectory.AppConfig,
     });

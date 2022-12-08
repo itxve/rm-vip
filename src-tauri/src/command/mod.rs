@@ -51,6 +51,7 @@ pub fn write_file(file_path: std::path::PathBuf, data: &str) -> Rt<String> {
 
 #[tauri::command]
 pub fn init_app_data_path(file_path: std::path::PathBuf) -> InitType {
+    println!("{:?}", file_path);
     if file_path.exists() {
         InitType::EXIST
     } else {

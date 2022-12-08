@@ -113,8 +113,7 @@ jobs:
     needs: [create-release, build-tauri]
     steps:
       - uses: actions/checkout@v3
-      - run: yarn add pnpm -g
-      - run: pnpm i && pnpm updater
+      - run: yarn && yarn updater
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 

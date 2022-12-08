@@ -2,14 +2,7 @@
 import { ref, onMounted, computed } from "vue";
 import useInterval from "@/hooks/useInterval";
 import { invoke } from "@tauri-apps/api/tauri";
-import {
-  JY_FILE_NAME,
-  readConfig,
-  writeConfig,
-  initAppDataPath,
-  exsitAppConfigDir,
-  sleep,
-} from "@/util";
+import { JY_FILE_NAME, readConfig, writeConfig } from "@/util";
 import { RustCallResult } from "@/types";
 import DraftItemVue, {
   DarftProps,
@@ -43,13 +36,6 @@ async function onChange(e: any) {
 }
 
 async function loadAllProjects() {
-  const exsitConfigDir = await exsitAppConfigDir();
-
-  if (!exsitConfigDir) {
-    console.log("no app config dir");
-    await initAppDataPath();
-    return;
-  }
   const { root_path } = await readConfig();
   const projects: RustCallResult<DarftItemProps[]> = await invoke("projects", {
     appConfigPath: root_path,

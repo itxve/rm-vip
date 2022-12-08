@@ -9,13 +9,15 @@ mod config;
 mod mstruct;
 
 fn main() {
-    tauri::Builder::default()
+    let app = tauri::Builder::default()
         .invoke_handler(tauri::generate_handler![
             command::projects,
             command::read_file,
-            command::init_app_data_path,
             command::write_file
         ])
-        .run(tauri::generate_context!())
+        .build(tauri::generate_context!())
         .expect("error while running tauri application");
+    //初始化app config目录
+    command::init_app_data_path(tauri::api::path::app_config_dir(&app.config()).unwrap());
+    app.run(|_app_handle, _event| {});
 }

@@ -64,35 +64,6 @@ export async function writeSysFileFromString(
   return !rt.err;
 }
 
-/**
- * 初始化App Data目录
- * @param path
- * @returns
- */
-export async function initAppDataPath() {
-  const path = await appConfigDir();
-  const file: number = await invoke("init_app_data_path", {
-    filePath: path,
-  });
-  return file;
-}
-/**
- * app config 是否存在
- * @returns
- */
-export async function exsitAppConfigDir() {
-  try {
-    const path = await appConfigDir();
-    const exsitAppConfigPath = await exists(path + APP_CONFIG_FILE_NAME, {
-      dir: BaseDirectory.AppConfig,
-    });
-    console.log("appConfigDir::::", path, exsitAppConfigPath);
-    return exsitAppConfigPath;
-  } catch (error) {
-    return false;
-  }
-}
-
 export function sleep(ms: number) {
   return new Promise((fn) => setTimeout(fn, ms));
 }

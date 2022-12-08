@@ -21,7 +21,7 @@
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  overflow-y: hidden;
+  overflow: hidden;
 }
 
 footer {

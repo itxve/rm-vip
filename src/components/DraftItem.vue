@@ -55,7 +55,7 @@ async function removeVip() {
       draft = JSON.parse(draft, (key, value) => {
         if (["resource_id", "formula_id"].includes(key)) {
           // flagVip = !!value;
-          return "";
+          return "_vip";
         } else {
           return value;
         }

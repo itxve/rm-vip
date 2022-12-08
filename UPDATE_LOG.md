@@ -1,4 +1,7 @@
 # Updater Log
+## v1.0.5
+fix: build error
+
 ## v1.0.4
 fix: bug
 

@@ -33,7 +33,8 @@ footer {
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  margin-top: 20px;
+  padding-top: 20px;
+  z-index: -10;
 }
 
 .logo {

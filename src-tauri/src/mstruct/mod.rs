@@ -5,9 +5,9 @@ pub struct DraftItem {
     pub draft_cover: String,
     pub draft_json_file: String,
     pub draft_name: String,
-    pub draft_root_path: String,
-    pub tm_draft_create: u64,
-    pub tm_draft_modified: u64,
+    // pub draft_root_path: String,
+    // pub tm_draft_create: u64,
+    // pub tm_draft_modified: u64,
     pub tm_duration: u64,
 }
 

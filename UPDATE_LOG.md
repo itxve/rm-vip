@@ -1,4 +1,6 @@
 # Updater Log
+## v1.0.4
+fix: bug
 
 ## v1.0.3
 

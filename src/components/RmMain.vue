@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted, computed } from "vue";
-
+import useInterval from "@/hooks/useInterval";
 import { invoke } from "@tauri-apps/api/tauri";
 import {
   JY_FILE_NAME,
@@ -59,6 +59,10 @@ async function loadAllProjects() {
 
 onMounted(async () => {
   await loadAllProjects();
+});
+
+useInterval(3000, () => {
+  loadAllProjects();
 });
 
 const filterProjects = computed(() => {

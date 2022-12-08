@@ -11,25 +11,35 @@ export type DarftProps = {
 };
 
 import { readSysFileForArray, writeSysFileFromString } from "@/util";
-import { ref, watchPostEffect, onMounted } from "vue";
+import { ref, watchEffect, onMounted } from "vue";
 import { NButton, useNotification } from "naive-ui";
+
+import useInterval from "@/hooks/useInterval";
 
 const props = defineProps<DarftItemProps>();
 const fileBlob = ref<string>();
 
 const notification = useNotification();
 
-onMounted(() => {
-  watchPostEffect(async () => {
-    if (props.draft_cover) {
-      await converntBlob(props.draft_cover);
-    }
-  });
+watchEffect(async () => {
+  await converntBlob(props.draft_cover);
+});
+
+useInterval(8000, () => {
+  console.log("draft_cover:::");
+  converntBlob(props.draft_cover);
 });
 
 async function converntBlob(cover: string) {
+  if (!props.draft_cover) {
+    return;
+  }
   const { data, err } = await readSysFileForArray(cover);
   if (!err) {
+    //存在移除
+    if (fileBlob.value) {
+      URL.revokeObjectURL(fileBlob.value);
+    }
     fileBlob.value = URL.createObjectURL(
       new Blob([Uint8Array.from(data)], { type: "image/*" })
     );
@@ -41,7 +51,6 @@ async function removeVip() {
   if (!props.draft_json_file) {
     return;
   }
-
   const { data, err } = await readSysFileForArray(props.draft_json_file);
   if (!err) {
     const fRead = new FileReader();
@@ -49,7 +58,6 @@ async function removeVip() {
       new Blob([Uint8Array.from(data)], { type: "application/json" })
     );
     fRead.onloadend = async function () {
-      console.log("fRead.result", fRead.result);
       let draft = fRead.result as string;
       // let flagVip = true;
       draft = JSON.parse(draft, (key, value) => {

@@ -2,6 +2,7 @@
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
 import RmMain from "./components/RmMain.vue";
+import { version } from "../package.json";
 import { NNotificationProvider } from "naive-ui";
 </script>
 
@@ -10,7 +11,7 @@ import { NNotificationProvider } from "naive-ui";
     <div class="container">
       <RmMain />
       <footer class="footer">
-        <div>© 2022 GitHub V1.0.0</div>
+        <div>© 2022 GitHub V{{ version }}</div>
       </footer>
     </div>
   </n-notification-provider>

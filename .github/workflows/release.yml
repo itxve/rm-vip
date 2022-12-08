@@ -114,7 +114,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: yarn add pnpm -g
-      - run: pnpm ipnpm&& pnpm updater
+      - run: pnpm i && pnpm updater
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 

@@ -1,10 +1,4 @@
-import {
-  writeTextFile,
-  readTextFile,
-  BaseDirectory,
-  exists,
-} from "@tauri-apps/api/fs";
-import { appConfigDir } from "@tauri-apps/api/path";
+import { writeTextFile, readTextFile, BaseDirectory } from "@tauri-apps/api/fs";
 
 import { invoke } from "@tauri-apps/api/tauri";
 

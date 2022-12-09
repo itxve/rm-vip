@@ -4,6 +4,7 @@ export type DarftItemProps = {
   draft_json_file: string;
   draft_name: string;
   tm_duration: number;
+  tm_draft_modified: number;
 };
 export type DarftProps = {
   all_draft_store: Array<DarftItemProps>;
@@ -11,10 +12,8 @@ export type DarftProps = {
 };
 
 import { readSysFileForArray, writeSysFileFromString } from "@/util";
-import { ref, watchEffect, onMounted } from "vue";
+import { ref, watchEffect, onUnmounted } from "vue";
 import { NButton, useNotification } from "naive-ui";
-
-import useInterval from "@/hooks/useInterval";
 
 const props = defineProps<DarftItemProps>();
 const fileBlob = ref<string>();
@@ -23,11 +22,6 @@ const notification = useNotification();
 
 watchEffect(async () => {
   await converntBlob(props.draft_cover);
-});
-
-useInterval(8000, () => {
-  console.log("draft_cover:::");
-  converntBlob(props.draft_cover);
 });
 
 async function converntBlob(cover: string) {
@@ -46,6 +40,11 @@ async function converntBlob(cover: string) {
   }
   return "";
 }
+onUnmounted(() => {
+  if (fileBlob.value) {
+    URL.revokeObjectURL(fileBlob.value);
+  }
+});
 
 async function removeVip() {
   if (!props.draft_json_file) {

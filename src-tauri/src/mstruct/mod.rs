@@ -7,13 +7,18 @@ pub struct DraftItem {
     pub draft_name: String,
     // pub draft_root_path: String,
     // pub tm_draft_create: u64,
-    // pub tm_draft_modified: u64,
+    pub tm_draft_modified: u64,
     pub tm_duration: u64,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct DraftStore {
     pub all_draft_store: Vec<DraftItem>,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct AppDataConfig {
+    pub root_path: String,
 }
 
 #[derive(Serialize, Deserialize, Debug)]

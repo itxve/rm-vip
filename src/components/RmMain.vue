@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted, computed } from "vue";
-import useInterval from "@/hooks/useInterval";
+import useListenEvent from "@/hooks/useListenEvent";
 import { invoke } from "@tauri-apps/api/tauri";
 import { JY_FILE_NAME, readConfig, writeConfig } from "@/util";
 import { RustCallResult } from "@/types";
@@ -8,8 +8,8 @@ import DraftItemVue, {
   DarftProps,
   DarftItemProps,
 } from "@/components/DraftItem.vue";
-import { NButton, NGrid, NGi, NInput } from "naive-ui";
-
+import { NButton, NGrid, NGi, NInput, useNotification } from "naive-ui";
+const notification = useNotification();
 const fileSelectRef = ref<HTMLInputElement>();
 const projectsRef = ref<DarftItemProps[]>([]);
 const searchNameRef = ref();
@@ -18,14 +18,22 @@ async function onChange(e: any) {
   let reader = new FileReader();
   const fname: string = e.target.files[0].name;
   if (fname.indexOf(JY_FILE_NAME) == -1) {
-    alert("不是一个正确的剪映文件");
+    notification["error"]({
+      content: "配置错误",
+      meta: "不是一个正确的剪映文件",
+      duration: 1500,
+    });
     return;
   }
   reader.readAsText(e.target.files[0]);
   reader.onload = async function () {
     const result = reader.result as string;
     if (!result) {
-      alert("请选择配置文件");
+      notification["error"]({
+        content: "配置错误",
+        meta: "内容为空",
+        duration: 1500,
+      });
       return;
     }
     const darftRef: DarftProps = JSON.parse(result);
@@ -43,12 +51,12 @@ async function loadAllProjects() {
   projectsRef.value = projects.data;
 }
 
-onMounted(async () => {
-  await loadAllProjects();
+useListenEvent<number>("jy_file_change", (e) => {
+  loadAllProjects();
 });
 
-useInterval(3000, () => {
-  loadAllProjects();
+onMounted(async () => {
+  await loadAllProjects();
 });
 
 const filterProjects = computed(() => {
@@ -81,10 +89,8 @@ function fileSelect() {
       v-show="false"
       ref="fileSelectRef"
       type="file"
-      webkitdirectory
       accept=".json"
       @change="onChange($event)"
-      placeholder="请选择文件剪映草稿路径"
     />
     <div class="search">
       <n-space>
@@ -104,13 +110,6 @@ function fileSelect() {
         >
           配置剪映草稿路径
         </n-button>
-        <!-- <n-button
-          size="medium"
-          title="重新加载项目"
-          round
-          @click="loadAllProjects()"
-          >重新加载项目
-        </n-button> -->
       </n-space>
     </div>
     <div class="draft-div">
@@ -121,6 +120,7 @@ function fileSelect() {
       </n-empty>
       <n-grid :x-gap="15" :y-gap="15" item-responsive>
         <n-gi
+          :key="project.tm_draft_modified"
           span="360:8 480:6 720:4 960:3 1440:2"
           v-for="project in filterProjects"
         >

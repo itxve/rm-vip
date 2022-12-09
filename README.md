@@ -28,6 +28,12 @@ Uint8Array::form(number[])
 ```
 
 
+# 突然不能打包了 (未获得授权将Apple事件发送给Finder) 可能我装的totalfinder有问题
+`
+tccutil reset AppleEvents com.binaryage.totalfinder.agent
+`
+https://totalfinder.binaryage.com/injection-troubles
+
 # 鸣谢
 [📚 Tauri Tutorial (系列教程 - 打造属于自己的跨端应用)](https://github.com/lencx/tauri-tutorial)
 

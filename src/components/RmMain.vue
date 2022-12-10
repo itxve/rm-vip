@@ -4,6 +4,7 @@ import useListenEvent from "@/hooks/useListenEvent";
 import { invoke } from "@tauri-apps/api/tauri";
 import { JY_FILE_NAME, readConfig, writeConfig } from "@/util";
 import { RustCallResult } from "@/types";
+
 import DraftItemVue, {
   DarftProps,
   DarftItemProps,
@@ -16,8 +17,15 @@ const searchNameRef = ref();
 
 async function onChange(e: any) {
   let reader = new FileReader();
-  const fname: string = e.target.files[0].name;
-  if (fname.indexOf(JY_FILE_NAME) == -1) {
+  if (!e.target.files && !e.target.files.length) {
+    return;
+  }
+
+  const jyConfiigFile = [...e.target.files].find(
+    (ft) => ft.name.indexOf(JY_FILE_NAME) != -1
+  );
+
+  if (!jyConfiigFile) {
     notification["error"]({
       content: "配置错误",
       meta: "不是一个正确的剪映文件",
@@ -51,6 +59,9 @@ async function loadAllProjects() {
   projectsRef.value = projects.data;
 }
 
+/**
+ * 事件监听
+ */
 useListenEvent<number>("jy_file_change", (e) => {
   loadAllProjects();
 });

@@ -11,7 +11,13 @@ import { NNotificationProvider } from "naive-ui";
     <div class="container">
       <RmMain />
       <footer class="footer">
-        <div>© 2022 GitHub V{{ version }}</div>
+        <div>
+          © 2022
+          <a target="_blank" href="https://github.com/itxve/rm-vip">
+            <b>GitHub</b>
+          </a>
+          V{{ version }}
+        </div>
       </footer>
     </div>
   </n-notification-provider>

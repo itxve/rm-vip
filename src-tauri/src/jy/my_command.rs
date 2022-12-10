@@ -1,10 +1,8 @@
 use crate::config;
-use crate::mstruct::{AppDataConfig, DraftItem, DraftStore, InitType, Rt};
-
-use std::{fs, io::Read, path::PathBuf};
-
+use crate::jy::mstruct::{AppDataConfig, DraftItem, DraftStore, InitType, Rt};
 use notify::{RecursiveMode, Watcher};
 use std::sync::mpsc::channel;
+use std::{fs, io::Read, path::PathBuf};
 
 #[tauri::command]
 pub fn projects(app_config_path: std::path::PathBuf) -> Rt<Vec<DraftItem>> {

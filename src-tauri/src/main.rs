@@ -3,13 +3,9 @@
     windows_subsystem = "windows"
 )]
 #![warn(unused_must_use)]
-
+mod jy;
+use jy::{config, my_command};
 use tauri::Manager;
-
-mod config;
-mod mstruct;
-mod my_command;
-
 #[tauri::command(main)]
 fn main() {
     tauri::Builder::default()
@@ -19,10 +15,8 @@ fn main() {
             my_command::init_app_data_path(app_data_path.unwrap());
             Ok(())
         })
-        .on_window_event(|golabl_event| match golabl_event.event() {
-            tauri::WindowEvent::Destroyed => {}
-            _ => {}
-        })
+        .system_tray(jy::tray::menu())
+        .on_system_tray_event(jy::tray::handler)
         .on_page_load(|window, _| {
             //添加文件监视器
             let app_data_path = tauri::api::path::app_config_dir(&window.config()).unwrap();

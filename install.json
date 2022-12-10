@@ -1,0 +1,35 @@
+{
+  "version": "v1.2.0",
+  "notes": "更换软件图标",
+  "pub_date": "2022-12-10T12:01:08.221Z",
+  "platforms": {
+    "win64": {
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSQjd4YUVwZnRPMi91M0Z1QmRGdjkyWWhjL2tkZVhTVi9pTFNDbk1IYzF2WGhtRHU5Q3kvOEczQTB4eFhjUG1obVZGNzA5VDFLS0dWUmJjRk9WcmxhWmFmR0xSeFdOY1FVPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNjcwNjczNTc4CWZpbGU6anl4XzEuMi4wX3g2NF9lbi1VUy5tc2kuemlwCkVncHR5aGVuQ0UrOGM0dDg0R21ZNU5wSWUwYTI4M0YveEVQZDhpMWdXVmpHZTNmaElJSDJRUXF5S0RzQ05rdWU3STQ1NTFobGl6SGJBKzAyYlZVZkF3PT0K",
+      "url": "https://github.com/itxve/rm-vip/releases/download/v1.2.0/jyx_1.2.0_x64_en-US.msi.zip"
+    },
+    "linux": {
+      "signature": "",
+      "url": ""
+    },
+    "darwin": {
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSQjd4YUVwZnRPMjBJQUtHN01FNHJtQWhBc3VCZFAzUU1EcmcreGgrTXoyWDBuT0VqbWluSU5XQUtnbFRlejh6U3h2bEVlUWVKWlFGUjRqTjU0NkRYZVExeFpCdlRBM2dBPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNjcwNjczNDY5CWZpbGU6anl4LmFwcC50YXIuZ3oKNlRwbnBGNFdOLzJZM29rbU05RVFENHJFL0VWUkxQemY2QXcxVWJqRzgvVHlHUHRyU3Z5TTFVVmM1RXBkWnpiVTVoc1d0SkdEQlJlRHpHcGY2MXU2QVE9PQo=",
+      "url": "https://github.com/itxve/rm-vip/releases/download/v1.2.0/jyx.app.tar.gz"
+    },
+    "darwin-aarch64": {
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSQjd4YUVwZnRPMjBJQUtHN01FNHJtQWhBc3VCZFAzUU1EcmcreGgrTXoyWDBuT0VqbWluSU5XQUtnbFRlejh6U3h2bEVlUWVKWlFGUjRqTjU0NkRYZVExeFpCdlRBM2dBPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNjcwNjczNDY5CWZpbGU6anl4LmFwcC50YXIuZ3oKNlRwbnBGNFdOLzJZM29rbU05RVFENHJFL0VWUkxQemY2QXcxVWJqRzgvVHlHUHRyU3Z5TTFVVmM1RXBkWnpiVTVoc1d0SkdEQlJlRHpHcGY2MXU2QVE9PQo=",
+      "url": "https://github.com/itxve/rm-vip/releases/download/v1.2.0/jyx.app.tar.gz"
+    },
+    "darwin-x86_64": {
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSQjd4YUVwZnRPMjBJQUtHN01FNHJtQWhBc3VCZFAzUU1EcmcreGgrTXoyWDBuT0VqbWluSU5XQUtnbFRlejh6U3h2bEVlUWVKWlFGUjRqTjU0NkRYZVExeFpCdlRBM2dBPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNjcwNjczNDY5CWZpbGU6anl4LmFwcC50YXIuZ3oKNlRwbnBGNFdOLzJZM29rbU05RVFENHJFL0VWUkxQemY2QXcxVWJqRzgvVHlHUHRyU3Z5TTFVVmM1RXBkWnpiVTVoc1d0SkdEQlJlRHpHcGY2MXU2QVE9PQo=",
+      "url": "https://github.com/itxve/rm-vip/releases/download/v1.2.0/jyx.app.tar.gz"
+    },
+    "linux-x86_64": {
+      "signature": "",
+      "url": ""
+    },
+    "windows-x86_64": {
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSQjd4YUVwZnRPMi91M0Z1QmRGdjkyWWhjL2tkZVhTVi9pTFNDbk1IYzF2WGhtRHU5Q3kvOEczQTB4eFhjUG1obVZGNzA5VDFLS0dWUmJjRk9WcmxhWmFmR0xSeFdOY1FVPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNjcwNjczNTc4CWZpbGU6anl4XzEuMi4wX3g2NF9lbi1VUy5tc2kuemlwCkVncHR5aGVuQ0UrOGM0dDg0R21ZNU5wSWUwYTI4M0YveEVQZDhpMWdXVmpHZTNmaElJSDJRUXF5S0RzQ05rdWU3STQ1NTFobGl6SGJBKzAyYlZVZkF3PT0K",
+      "url": "https://github.com/itxve/rm-vip/releases/download/v1.2.0/jyx_1.2.0_x64_en-US.msi.zip"
+    }
+  }
+}
